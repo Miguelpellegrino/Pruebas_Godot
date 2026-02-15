@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://diepxqr2uucy"]
+
+[ext_resource type="Script" path="res://breakable_door.gd" id="1_d7j8r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_door"]
+size = Vector3(4, 5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_door"]
+albedo_color = Color(0.4, 0.2, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door"]
+size = Vector3(4, 5, 0.5)
+
+[node name="BreakableDoor" type="StaticBody3D"]
+script = ExtResource("1_d7j8r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_door")
+surface_material_override/0 = SubResource("StandardMaterial3D_door")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_door")
